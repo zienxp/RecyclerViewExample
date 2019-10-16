@@ -14,6 +14,9 @@ public class MainActivity extends AppCompatActivity {
     private RecyclerView.LayoutManager layoutManager;
     private List<String> list;
     private RecycleAdapter adapter;
+    private int[] images ={R.drawable.cupcake,R.drawable.donut,R.drawable.eclair,R.drawable.froyo,R.drawable.gingerbread,
+            R.drawable.honeycomb,R.drawable.icecream_sandwich,R.drawable.jellybean,R.drawable.kitkat,R.drawable.lollipop,
+            R.drawable.marshmallow,R.drawable.nogat,R.drawable.oreo,R.drawable.android};
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,7 +28,7 @@ public class MainActivity extends AppCompatActivity {
         recyclerView.setHasFixedSize(true);
         //get word list from Strings
         list = Arrays.asList(getResources().getStringArray(R.array.android_version));
-        adapter = new RecycleAdapter(list);
+        adapter = new RecycleAdapter(list,images);
         recyclerView.setAdapter(adapter);
 
 
