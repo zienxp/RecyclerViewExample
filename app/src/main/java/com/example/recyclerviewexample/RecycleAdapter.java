@@ -1,5 +1,7 @@
 package com.example.recyclerviewexample;
 
+import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,10 +17,12 @@ public class RecycleAdapter extends RecyclerView.Adapter <RecycleAdapter.MyViewH
 
     private List<String> list;
     private int[] images;
+    private Context context;
 
-    public RecycleAdapter(List<String> list, int[] images) {
+    public RecycleAdapter(List<String> list, int[] images, Context context) {
         this.list = list;
         this.images = images;
+        this.context = context;
     }
 
     @NonNull
@@ -26,7 +30,7 @@ public class RecycleAdapter extends RecyclerView.Adapter <RecycleAdapter.MyViewH
     public MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
 
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.album_layout,parent,false);
-        MyViewHolder myViewHolder = new MyViewHolder(view);
+        MyViewHolder myViewHolder = new MyViewHolder(view,context,images,list);
 
         return myViewHolder;
     }
@@ -45,13 +49,21 @@ public class RecycleAdapter extends RecyclerView.Adapter <RecycleAdapter.MyViewH
         return list.size();
     }
 
-    public static class MyViewHolder extends RecyclerView.ViewHolder{
+    public static class MyViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         ImageView versionLogo;
         TextView versionName;
-        public MyViewHolder(@NonNull View itemView) {
+        Context context;
+        public MyViewHolder(@NonNull View itemView,Context context,int[] images,List<String> list) {
             super(itemView);
             versionLogo = itemView.findViewById(R.id.image_view);
             versionName = itemView.findViewById(R.id.text_view);
+            itemView.setOnClickListener(this);
+        }
+
+        @Override
+        public void onClick(View view) {
+
+
         }
     }
 
