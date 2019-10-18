@@ -53,15 +53,23 @@ public class RecycleAdapter extends RecyclerView.Adapter <RecycleAdapter.MyViewH
         ImageView versionLogo;
         TextView versionName;
         Context context;
+        int[] images;
+        List<String> list;
         public MyViewHolder(@NonNull View itemView,Context context,int[] images,List<String> list) {
             super(itemView);
             versionLogo = itemView.findViewById(R.id.image_view);
             versionName = itemView.findViewById(R.id.text_view);
             itemView.setOnClickListener(this);
+            this.context =context;
+            this.images =images;
+            this.list = list;
         }
 
         @Override
         public void onClick(View view) {
+            Intent intent= new Intent(context,DisplayActivity.class);
+            intent.putExtra("image_id",images[getAdapterPosition()]);
+            context.startActivity(intent);
 
 
         }

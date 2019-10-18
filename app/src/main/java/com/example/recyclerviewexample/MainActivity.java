@@ -28,7 +28,7 @@ public class MainActivity extends AppCompatActivity {
         recyclerView.setHasFixedSize(true);
         //get word list from Strings
         list = Arrays.asList(getResources().getStringArray(R.array.android_version));
-        adapter = new RecycleAdapter(list,images);
+        adapter = new RecycleAdapter(list,images,this);
         recyclerView.setAdapter(adapter);
 
 
